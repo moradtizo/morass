@@ -1,0 +1,83 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Morasse budgétaire</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+             <li class="breadcrumb-item">Tables</li>
+             <li class="breadcrumb-item active">Morasse budgétaire</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section">
+       <div class="row">
+          <div class="col-lg-12">
+             <div class="card">
+                <div class="card-body">
+                   <!-- <h5 class="card-title">Datatables</h5>
+                   <p>Add lightweight datatables to your project.</p> -->
+
+                  <!-- -->
+                  <div class="row">
+
+                    <div class="col-sm-12 col-md-6 text-end mt-2 mb-1">
+                      <div class="dt-buttons btn-group flex-wrap">
+                        <button class="btn btn-outline-secondary buttons-excel buttons-html5  me-2" tabindex="0" aria-controls="example1" type="button">
+                          <span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOpJREFUSEvtlbsNwjAQQF8KVqBBQkIU0NBTsQJbwAI0bAAjwCAMQEUNBR0CKRUrUIBOsqXoiPFPEU2usZzz3buPcy5oWIqG/RMLeJuAgu2CDxrHLcDb8rZEzIENMFbFsrdNl8ju7fErsAIO9oO+piXQq+lEKEBMb8DQBfA1MVqvM4h2oLL9sg8B7ICF4wLvgWVFlwToAEdgqiAnYAa8cgFi3wUuZpX9E5iYtcpNysA6kAwkExGJXDLQkgUQZ7YXUvs6yQb4htX/AQ+g7wvTo78DA9efLLNoC4wSIWdg/WsWJfp1m8W+ydEBfAD68zQZ7jJc1AAAAABJRU5ErkJggg=="/></span>
+                        </button>
+                        <button class="btn btn-outline-success buttons-pdf buttons-html5 me-2" (click)="downloadTemplate()"tabindex="0" aria-controls="example1" type="button">
+                          <span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAOtJREFUSEvtlLENwjAQRV8KVqBBQkIU0NBTsQJbwAI0bAAjwCAMQEUNBR0CKRUrUIAO2VJ0EPucKF3cWHbu/rt/SS6j4ZU1rE8qYOEK2lsLSwFMgaMTngEnC8QK6AIXQHZZT2Di9iDHAui4ysVBcYkDcfIKESyAHeB7r7XkXSzrAor5b3ewFPYNNQc64dqAObABxsq2L0QD/NmHX4EVcPAX2kEO9P701AqQ1BswLAPEWpD8XDtIFlBuf/JbgP4earcoNt9aQKxDRFv0APpRmXDAHRiU/ckyi7bAqCLkDKxDs6iibnla6rhOLuADaREyGWG4OkIAAAAASUVORK5CYII="/></span>
+                        </button>
+                        <button class="btn btn-outline-info buttons-print " [routerLink]="['/add-morass']" routerLinkActive="router-link-active"   tabindex="0" aria-controls="example1" type="button">
+                          <span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAMJJREFUSEvdlE0KwkAMRl/PIQjShb2Nl3HjDfRCPYib7oqC91AqDgxpyc+0peBsJ/le8mUmFSufamV9NMAJuAJNsIgOOAPtkKcBXsAuKJ7Ce6C2AO9C8ZT2LV7rYFNAKkwrYlYHRYBUjTsZCHVgAaw/I2EjizYH5K/WbWPettXBfwE8nzw8ZI/oyEZtBk9gH1X9xT+Ag9xFcsjDur4BxyDkDlym1rUEBHWnwzWLFgeUeq6ukPyy1HM3YBFLpIi1IWdDPx8jLBkZXJ+qAAAAAElFTkSuQmCC"/></span>
+                        </button>
+                      </div>
+                    </div>
+
+                </div>
+
+                  <!---->
+
+                   <table class="table table-striped table datatable">
+                      <thead class="table-success">
+                         <tr>
+                            <th scope="col">Pays</th>
+                            <th scope="col">Anneé</th>
+                            <th scope="col">CF</th>
+                            <th scope="col">CE</th>
+                            <th scope="col">Prog</th>
+                            <th scope="col">Rég</th>
+                            <th scope="col">Proj</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Ligne</th>
+                            <th scope="col">Service et depences</th>
+                            <th scope="col">Crédits de Paiement</th>
+
+                         </tr>
+                      </thead>
+                      <tbody>
+                         <tr *ngFor="let mo of morass">
+                            <th scope="row">{{ mo.pays }}</th>
+                            <td>2023-05-25</td>
+                            <td>{{ mo.codeFonc }}</td>
+                            <td>{{ mo.codeEco }}</td>
+                            <td>{{ mo.prog }}</td>
+                            <td>{{ mo.reg }}</td>
+                            <td>{{ mo.proj }}</td>
+                            <td>{{ mo.type }}</td>
+                            <td>{{ mo.rubriques }}</td>
+                            <td>{{ mo.creditsDePaiemant }}</td>
+                            <td>20165-25</td>
+
+                      </tbody>
+                   </table>
+
+                </div>
+             </div>
+          </div>
+       </div>
+    </section>
+ </main>
+
+
+
