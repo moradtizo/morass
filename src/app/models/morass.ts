@@ -14,6 +14,7 @@ export interface Morass {
 }
 
 export interface ResMorass{
+  total: number;
   success?: boolean;
   budgetaires:Morass[]
 }
@@ -24,5 +25,11 @@ export interface ResMorasses{
 export interface ResOneMorass {
   success?: boolean;
   budgetaire: Morass;
+}
+export interface Pagination {
+  page: number;
+  limit: number;
+  total: number;
+  // nextPage: number;
 }
 

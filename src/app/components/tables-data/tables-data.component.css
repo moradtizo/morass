@@ -26,6 +26,38 @@ i.bx.bxs-x-circle{
   flex-wrap: nowrap;
   height: 65px;
 } */
+.table td,
+.table th {
+  border: 1px solid #000;
+}
+
+
+.data-table-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  margin: 0;
+}
+
+.page-item {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.page-item.disabled .page-link,
+.page-item.disabled .page-link:hover {
+  color: #999999;
+  cursor: default;
+  pointer-events: none;
+}
+
+.page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+}
 
 
 

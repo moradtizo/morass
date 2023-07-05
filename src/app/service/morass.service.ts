@@ -10,18 +10,16 @@ import { query } from '@angular/animations';
   providedIn: 'root'
 })
 export class MorassService {
-
+  private readonly apiUrl ="http://localhost:4000/api/v1/budgetaire"
   // apiUrl: 'http://localhost:4000/api/v1/budgetaire'
   baseUrl:'http://localhost:4000/api/v1/budgetaire' | undefined
   constructor(private http: HttpClient) { }
 
+  getPaginasion(page: number, limit: number): Observable<ResMorass> {
+    const url = `${this.apiUrl}?page=${page}&limit=${limit}`;
+    return this.http.get<ResMorass>(url);
+  }
 
-// getAllmorass() {
-//   return this.http.get<Morass[]>(this.apiUrl);
-// }
-// getAllMorass():Observable<ResMorass> {
-//   return this.http.get<ResMorass>('http://localhost:4000/api/v1/budgetaire')
-// }
 getAllMorass(page: number, pageSize: number): Observable<ResMorass> {
   const params = new HttpParams()
     .set('page', page.toString())

@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Morass, ResMorass, ResMorasses } from 'src/app/models/morass';
+import { Morass, Pagination, ResMorass, ResMorasses } from 'src/app/models/morass';
 import { MorassService } from 'src/app/service/morass.service';
 import { PopUpService } from './services/pop-up.service';
 import * as XLSX from 'xlsx';
@@ -13,12 +13,17 @@ import * as XLSX from 'xlsx';
 })
 export class TablesDataComponent implements OnInit {
   search : string = ''
-  morass: Morass[] = [];
+  page: number = 1; // Current page
+  morass: Morass[] = []; // Budget items array
+  pagination: Pagination = {
+    page: 1,
+    limit: 5,
+    total: 0,
+  };
 
   @ViewChild('fileInput', { static: false }) fileInput!: ElementRef;
   fileSelected: boolean = false;
   selectedFile: File | null = null;
-
   uploadProgress: number = 0;
 
 
@@ -31,16 +36,33 @@ export class TablesDataComponent implements OnInit {
     // s.src = "../assets/js/main.js";
     // this.elementRef.nativeElement.appendChild(s);
   }
+  loadPage(pageNumber: number) {
+    this.pagination.page = pageNumber;
+    this.morassService.getPaginasion(this.pagination.page, this.pagination.limit).subscribe((response: ResMorass) => {
+      this.morass = response.budgetaires;
+      this.pagination.total = response.total;
+    });
+  }
+
+  getPageNumbers(): number[] {
+    const totalPages = this.getTotalPages();
+    return Array(totalPages).fill(0).map((_, index) => index + 1);
+  }
+
+  getTotalPages(): number {
+    return Math.ceil(this.pagination.total / this.pagination.limit);
+  }
+
 
 getMorass(){
   this.morassService.getMorasses().subscribe((res:ResMorass)=> {
-
       this.morass = res.budgetaires
 
     // console.log(res);
   })
 
 }
+
 downloadTemplate() {
   this.morassService.downloadExcel().subscribe(blob => {
     this.morassService.saveExcelFile(blob, 'Budgetaire_Template.xlsx');
@@ -157,9 +179,6 @@ downloadTemplate() {
       console.log('No file selected.');
     }
   }
-
-
-
 
   clearPopupData() {
     this.selectedFile = null;
