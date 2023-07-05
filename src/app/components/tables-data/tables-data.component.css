@@ -1,0 +1,31 @@
+.row {
+
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-.5 * var(--bs-gutter-x));
+  margin-left: calc(-.5 * var(--bs-gutter-x));
+  justify-content: flex-end;
+}
+i.bx.bx-edit {
+  font-size: x-large;
+}
+i.bx.bxs-x-circle{
+  font-size:x-large;
+  color: red;
+}
+.button-container {
+  display: flex;
+}
+
+.button-container button {
+  margin-right: 10px; /* Optional: Adjust the spacing between the buttons */
+}
+/* td.test {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 65px;
+} */
+
+
+
